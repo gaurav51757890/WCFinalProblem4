@@ -16,38 +16,39 @@ namespace Program4
             Console.WriteLine("------------------------------------------------------------------------\n");
             int Size = Convert.ToInt32(Console.ReadLine().Trim());
 
-            int[] nums = new int[Size];
-            var setofNumbers = new HashSet<int>();
-
             if (Size > 105 || Size < 1)
             {
                 Console.WriteLine("Size should be between 1 and 105");
                 return;
             }
-            else
+
+            int[] nums = new int[Size];
+
+            var setofNumbers = new HashSet<int>();
+
+            Console.WriteLine("Input the elements of array :");
+
+            for (int i = 0; i < Size; i++)
             {
-                Console.WriteLine("Input the elements of array :");
-                for (int i = 0; i < Size; i++)
+                int input = Convert.ToInt32(Console.ReadLine().Trim());
+                if (input > 109 || input < -109)
                 {
-                    int input = Convert.ToInt32(Console.ReadLine().Trim());
-                    if (input > 109 || input < -109)
+                    Console.WriteLine("Value entered should be between -109 and 109");
+                    return;
+                }
+                else
+                {
+                    if (setofNumbers.Contains(input))
                     {
-                        Console.WriteLine("Value entered should be between -109 and 109");
+                        Console.WriteLine("Arrays Elements are duplicate:" + true);
                         return;
                     }
-                    else
-                    {
-                        if (setofNumbers.Contains(input))
-                        {
-                            Console.WriteLine("Arrays Elements are duplicate:" + true);
-                            return;
-                        }
-                        nums[i] = input;
-                        setofNumbers.Add(nums[i]);
-                    }
+                    nums[i] = input;
+                    setofNumbers.Add(nums[i]);
                 }
-                Console.WriteLine("Arrays Elements are not duplicate :" + false);
             }
+            Console.WriteLine("Arrays Elements are not duplicate :" + false);
+
         }
     }
 }
